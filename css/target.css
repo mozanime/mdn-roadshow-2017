@@ -1,0 +1,14 @@
+#target {
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 200px;
+}
+
+.logo {
+  background-image: url(../images/nightly.png);
+}
+
+.bus {
+  background-image: url(../images/bus.png);
+}
