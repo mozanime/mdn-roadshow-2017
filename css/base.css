@@ -1,0 +1,84 @@
+:root {
+  --mdn-green: rgb(184, 213, 69);
+}
+
+body {
+  overflow: hidden;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 1.3;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: grid;
+  margin: 50px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 90px 1fr;
+  grid-template-areas: "header header"
+                       "code target";
+}
+
+header {
+  grid-area: header;
+  font-family: x-locale-heading-primary,zillaslab,Palatino,x-locale-heading-secondary,serif;
+  font-size: 40px;
+}
+
+header div {
+  display: inline-block;
+  padding: 5px;
+  height: 1.3em;
+  line-height: 1.3em;
+  vertical-align: middle;
+}
+
+header .squre {
+  width: 1.3em;
+  background-color: black;
+}
+
+header .title {
+  color: black;
+  background-color: var(--mdn-green);
+}
+
+header nav {
+  float: right;
+}
+
+header nav a {
+  color: var(--mdn-green);
+}
+
+.code {
+  grid-area: code;
+}
+
+pre {
+  font-size: 26px;
+  line-height: 1.2em;
+  word-wrap: break-word;
+  border: 3px dashed var(--mdn-green);
+  grid-area: code;
+}
+
+pre code {
+  word-wrap: normal;
+  text-align: left;
+  padding: 1em;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+}
+
+.target-content {
+  grid-area: target;
+  display: flex;
+  justify-content: space-around;
+}
+
+.target-content div {
+  margin: auto;
+}
