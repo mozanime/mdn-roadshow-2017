@@ -22,6 +22,12 @@ function scheduleCodeUpdate(evt) {
   if (block.highlightTimeout) {
     clearTimeout(block.highlightTimeout);
   }
+
+  const styleBlock = document.querySelector('.target-content style');
+  if (styleBlock) {
+    styleBlock.remove();
+  }
+
   block.updateTimeout = setTimeout(() => { updateCode(block) }, 500);
   block.highlightTimeout = setTimeout(() => {
     block.highlightTimeout = null;
@@ -55,11 +61,9 @@ function updateCSS(block) {
     console.log('Target content to update not found');
   }
   // Create style element
-  let styleBlock = target.querySelector('style');
-  if (!styleBlock) {
-    styleBlock = document.createElement('style');
-    target.appendChild(styleBlock);
-  }
+  let styleBlock = document.createElement('style');
+  target.appendChild(styleBlock);
+
   // Update result
   styleBlock.textContent = block.textContent;
 }
