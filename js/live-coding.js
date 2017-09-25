@@ -31,6 +31,19 @@ function scheduleCodeUpdate(evt) {
 
 function updateCode(block) {
   block.updateTimeout = null;
+
+  document.querySelector('#target').getAnimations().forEach(animation => {
+    animation.cancel();
+  });
+
+  if (block.classList.contains('css')) {
+    updateCSS(block);
+  } else {
+    updateJS(block);
+  }
+}
+
+function updateCSS(block) {
   // Get target content
   let ancestor = block;
   let target = null;
@@ -49,4 +62,17 @@ function updateCode(block) {
   }
   // Update result
   styleBlock.textContent = block.textContent;
+}
+
+function updateJS(block) {
+  const errorBlock = document.querySelector('.js-error');
+  try {
+    eval(block.textContent);
+    errorBlock.textContent = '';
+    errorBlock.classList.remove('active');
+  } catch(e) {
+    console.log(e);
+    errorBlock.textContent = `Error: ${e.message}`;
+    errorBlock.classList.add('active');
+  }
 }
