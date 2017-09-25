@@ -19,9 +19,6 @@ function scheduleCodeUpdate(evt) {
   if (block.updateTimeout) {
     clearTimeout(block.updateTimeout);
   }
-  if (block.highlightTimeout) {
-    clearTimeout(block.highlightTimeout);
-  }
 
   const styleBlock = document.querySelector('.target-content style');
   if (styleBlock) {
@@ -29,14 +26,13 @@ function scheduleCodeUpdate(evt) {
   }
 
   block.updateTimeout = setTimeout(() => { updateCode(block) }, 500);
-  block.highlightTimeout = setTimeout(() => {
-    block.highlightTimeout = null;
-    hljs.highlightBlock(block);
-  }, 3000);
 }
 
 function updateCode(block) {
   block.updateTimeout = null;
+
+  const selection = window.getSelection();
+  const caretRect = selection.getRangeAt(0).getBoundingClientRect();
 
   document.querySelector('#target').getAnimations().forEach(animation => {
     animation.cancel();
@@ -47,6 +43,16 @@ function updateCode(block) {
   } else {
     updateJS(block);
   }
+
+  hljs.highlightBlock(block);
+
+  const caretPosition =
+    document.caretPositionFromPoint(caretRect.x, caretRect.y);
+  const range = document.createRange();
+  range.setStart(caretPosition.offsetNode, caretPosition.offset);
+  range.setEnd(caretPosition.offsetNode, caretPosition.offset);
+  selection.removeAllRanges();
+  selection.addRange(range);
 }
 
 function updateCSS(block) {
