@@ -3,11 +3,15 @@ const links = [
   'transition-delay',
   'transition-timing-function',
   'transition-multi-property',
+  'transition-shorthand',
   'animation-duration',
+  'animation-delay',
   'animation-iteration-count',
   'animation-direction',
   'animation-fill-mode',
   'animation-timing-function',
+  'animation-more-keyframes',
+  'js-simple',
   'js-end-delay',
   'js-effect-easing',
   'js-id',
@@ -36,7 +40,6 @@ const datas = {
     code:
 `
 .logo {
-  transition-property: transform;
   transition-duration: 1s;
   transition-delay: ;
 }
@@ -53,7 +56,6 @@ const datas = {
     code:
 `
 .logo {
-  transition-property: transform;
   transition-duration: 1s;
   transition-timing-function: ;
 }
@@ -70,9 +72,25 @@ const datas = {
     code:
 `
 .logo {
-  transition-property: transform;
+  transition-property: ;
   transition-duration: 1s;
   transition-timing-function: ease-in;
+}
+.logo:hover {
+  transform: scale(2);
+  opacity: 0;
+}
+`
+  },
+
+  'transition-shorthand': {
+    title: 'CSS Transitions: shorthand',
+    target: 'logo',
+    type: 'css',
+    code:
+         `
+.logo {
+  transition: transform 1s ease-in, opacity 2s steps(4);
 }
 .logo:hover {
   transform: scale(2);
@@ -89,6 +107,29 @@ const datas = {
 `
 .bus {
 
+
+}
+@keyframes move {
+  from {
+    transform: translate(0px, 0px);
+  }
+  to {
+    transform: translate(100px, 0px);
+  }
+}
+`
+  },
+
+  'animation-delay': {
+    title: 'CSS Animations: animation-delay (also negative)',
+    target: 'bus',
+    type: 'css',
+    code:
+         `
+.bus {
+  animation-name: move;
+  animation-duration: 1s;
+  animation-delay:
 }
 @keyframes move {
   from {
@@ -195,6 +236,49 @@ const datas = {
 `
   },
 
+  'animation-more-keyframes': {
+    title: 'CSS Animations: more keyframes',
+    target: 'bus',
+    type: 'css',
+    code:
+         `
+.bus {
+  animation-name: move;
+  animation-duration: 1s;
+  animation-iteration-count: 5;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+  border-radius: 100px;
+}
+@keyframes move {
+  from {
+    transform: translate(0px, 0px);
+  }
+  50% {
+
+
+  }
+  to {
+    transform: translate(100px, 0px);
+  }
+}
+`
+  },
+
+  'js-simple': {
+    title: 'Web Animations: simple',
+    target: 'bus',
+    type: 'js',
+    code:
+         `
+target.animate(
+    { transform: ['translate(0px, 0px)',
+                  'translate(100px, 0px)'] },
+    1000,
+);
+`
+  },
+
   'js-end-delay': {
     title: 'Web Animations: end-delay',
     target: 'bus',
@@ -212,6 +296,7 @@ const animation = target.animate(
 );
 
 animation.onfinish = () => {
+
 };
 `
   },
