@@ -5,16 +5,14 @@ const links = [
   'transition-multi-property',
   'transition-shorthand',
   'animation-duration',
-  'animation-delay',
+  'animation-delay-and-timing-function',
   'animation-iteration-count',
   'animation-direction',
   'animation-fill-mode',
-  'animation-timing-function',
   'animation-more-keyframes',
   'animation-performance',
   'js-simple',
   'js-end-delay',
-  'js-effect-easing',
   'js-id',
 ];
 
@@ -111,18 +109,18 @@ const datas = {
 
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
   }
-  to {
+  100% {
     transform: translate(100px, 0px);
   }
 }
 `
   },
 
-  'animation-delay': {
-    title: 'CSS Animations: animation-delay (also negative)',
+  'animation-delay-and-timing-function': {
+    title: 'CSS Animations: animation-delay, animation-timing-function',
     target: 'bus',
     type: 'css',
     code:
@@ -130,13 +128,14 @@ const datas = {
 .bus {
   animation-name: move;
   animation-duration: 1s;
-  animation-delay:
+  animation-delay: 2s;
+  animation-timing-function: steps(5)
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
   }
-  to {
+  100% {
     transform: translate(100px, 0px);
   }
 }
@@ -155,10 +154,10 @@ const datas = {
   animation-iteration-count:
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
   }
-  to {
+  100% {
     transform: translate(100px, 0px);
   }
 }
@@ -178,10 +177,10 @@ const datas = {
   animation-direction:
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
   }
-  to {
+  100% {
     transform: translate(100px, 0px);
   }
 }
@@ -202,35 +201,10 @@ const datas = {
   animation-fill-mode:
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
   }
-  to {
-    transform: translate(100px, 0px);
-  }
-}
-`
-  },
-
-  'animation-timing-function': {
-    title: 'CSS Animations: animation-timing-function',
-    target: 'bus',
-    type: 'css',
-    code:
-`
-.bus {
-  animation-name: move;
-  animation-duration: 1s;
-  animation-iteration-count: 5;
-  animation-direction: alternate;
-  animation-fill-mode: forwards;
-  animation-timing-function:
-}
-@keyframes move {
-  from {
-    transform: translate(0px, 0px);
-  }
-  to {
+  100% {
     transform: translate(100px, 0px);
   }
 }
@@ -252,14 +226,14 @@ const datas = {
   border-radius: 100px;
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
   }
   50% {
 
 
   }
-  to {
+  100% {
     transform: translate(100px, 0px);
   }
 }
@@ -279,7 +253,7 @@ const datas = {
   animation-direction: alternate;
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
     opacity: 1;
 
@@ -287,7 +261,7 @@ const datas = {
   50% {
     opacity: 0;
   }
-  to {
+  100% {
     transform: translate(100px, 0px);
     opacity: 1;
 
@@ -329,24 +303,6 @@ const animation = target.animate(
 animation.onfinish = () => {
 
 };
-`
-  },
-
-  'js-effect-easing': {
-    title: 'Web Animations: effect easing',
-    target: 'bus',
-    type: 'js',
-    code:
-         `
-target.animate(
-    { transform: ['translate(0px, 0px)',
-                  'translate(100px, 0px)'] },
-    { duration: 1000,
-      iterations: 2,
-      direction: 'alternate',
-      fill: 'forwards',
-      easing: 'linear' },
-);
 `
   },
 
