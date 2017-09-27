@@ -1,6 +1,7 @@
 #target {
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
   width: 200px;
   height: 200px;
 }
