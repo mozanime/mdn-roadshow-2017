@@ -1,5 +1,7 @@
 'use strict';
 
+let webAnimation = null;
+
 [].forEach.call(document.querySelectorAll('.live-code'), function(block) {
   block.addEventListener('input', scheduleCodeUpdate);
   // Initial application
@@ -33,10 +35,6 @@ function updateCode(block) {
 
   const selection = window.getSelection();
   const caretRect = selection.getRangeAt(0).getBoundingClientRect();
-
-  document.querySelector('#target').getAnimations().forEach(animation => {
-    animation.cancel();
-  });
 
   if (block.classList.contains('css')) {
     updateCSS(block);
@@ -75,9 +73,18 @@ function updateCSS(block) {
 }
 
 function updateJS(block) {
+  if (webAnimation) {
+    webAnimation.cancel();
+  }
+
   const errorBlock = document.querySelector('.js-error');
   try {
-    eval(block.textContent);
+    const matches = block.textContent.match(/\s([a-z0-9]+)\s?=.*\.animate\(/);
+    let script = block.textContent;
+    if (matches) {
+      script += `\n${matches[1]};`
+    }
+    webAnimation = eval(script);
     errorBlock.textContent = '';
     errorBlock.classList.remove('active');
   } catch(e) {
