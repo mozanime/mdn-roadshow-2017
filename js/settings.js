@@ -11,6 +11,7 @@ const links = [
   'animation-fill-mode',
   'animation-timing-function',
   'animation-more-keyframes',
+  'animation-performance',
   'js-simple',
   'js-end-delay',
   'js-effect-easing',
@@ -260,6 +261,36 @@ const datas = {
   }
   to {
     transform: translate(100px, 0px);
+  }
+}
+`
+  },
+
+  'animation-performance': {
+    title: 'CSS Animations: performance',
+    target: 'bus',
+    type: 'css',
+    code:
+         `
+.bus {
+  animation-name: move;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes move {
+  from {
+    transform: translate(0px, 0px);
+    opacity: 1;
+
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    transform: translate(100px, 0px);
+    opacity: 1;
+
   }
 }
 `
