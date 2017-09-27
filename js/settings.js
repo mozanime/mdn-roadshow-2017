@@ -111,10 +111,10 @@ const datas = {
 
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
   }
-  to {
+  100% {
     transform: translate(100px, 0px);
   }
 }
@@ -133,10 +133,10 @@ const datas = {
   animation-delay:
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
   }
-  to {
+  100% {
     transform: translate(100px, 0px);
   }
 }
@@ -155,10 +155,10 @@ const datas = {
   animation-iteration-count:
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
   }
-  to {
+  100% {
     transform: translate(100px, 0px);
   }
 }
@@ -178,10 +178,10 @@ const datas = {
   animation-direction:
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
   }
-  to {
+  100% {
     transform: translate(100px, 0px);
   }
 }
@@ -202,10 +202,10 @@ const datas = {
   animation-fill-mode:
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
   }
-  to {
+  100% {
     transform: translate(100px, 0px);
   }
 }
@@ -227,10 +227,10 @@ const datas = {
   animation-timing-function:
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
   }
-  to {
+  100% {
     transform: translate(100px, 0px);
   }
 }
@@ -252,14 +252,14 @@ const datas = {
   border-radius: 100px;
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
   }
   50% {
 
 
   }
-  to {
+  100% {
     transform: translate(100px, 0px);
   }
 }
@@ -279,7 +279,7 @@ const datas = {
   animation-direction: alternate;
 }
 @keyframes move {
-  from {
+  0% {
     transform: translate(0px, 0px);
     opacity: 1;
 
@@ -287,7 +287,7 @@ const datas = {
   50% {
     opacity: 0;
   }
-  to {
+  100% {
     transform: translate(100px, 0px);
     opacity: 1;
 
